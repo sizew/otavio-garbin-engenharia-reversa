@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 620" width="1020" height="620">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #1e293b; }
+      .subtitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .header-bg { fill: #2563eb; }
+      .header-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #ffffff; }
+      .body-bg { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .row-even { fill: #ffffff; }
+      .row-odd { fill: #f1f5f9; }
+      .col-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 12px; font-weight: bold; fill: #0f172a; }
+      .col-type { font-family: 'Consolas', 'Courier New', monospace; font-size: 12px; fill: #0284c7; }
+      .col-pk { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: bold; fill: #b45309; }
+      .col-fk { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: bold; fill: #047857; }
+      .col-desc { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #475569; }
+      .line { stroke: #3b82f6; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .card-label { font-family: 'Consolas', monospace; font-size: 12px; font-weight: bold; fill: #1d4ed8; background: #eff6ff; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="#f1f5f9"/>
+
+  <!-- Page Title -->
+  <text x="40" y="45" class="title">Diagrama Entidade-Relacionamento (DER) - Oficina AutoCerta</text>
+  <text x="40" y="68" class="subtitle">SGBD: SQLite 3 | Baseado em db/oficina_db.sql</text>
+
+  <!-- ================= TABELA USUARIOS (Isolada / Autenticação) ================= -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="260" height="190" class="body-bg"/>
+    <path d="M 0 8 Q 0 0 8 0 L 252 0 Q 260 0 260 8 L 260 36 L 0 36 Z" class="header-bg" style="fill: #475569;"/>
+    <text x="130" y="24" text-anchor="middle" class="header-text">USUARIOS</text>
+    
+    <!-- Linhas -->
+    <rect x="1" y="37" width="258" height="28" class="row-even"/>
+    <text x="12" y="55" class="col-name">id</text>
+    <text x="80" y="55" class="col-type">INTEGER</text>
+    <text x="210" y="55" class="col-pk">[PK]</text>
+
+    <rect x="1" y="65" width="258" height="28" class="row-odd"/>
+    <text x="12" y="83" class="col-name">nome</text>
+    <text x="80" y="83" class="col-type">TEXT</text>
+    <text x="180" y="83" class="col-desc">NOT NULL</text>
+
+    <rect x="1" y="93" width="258" height="28" class="row-even"/>
+    <text x="12" y="111" class="col-name">login</text>
+    <text x="80" y="111" class="col-type">TEXT</text>
+    <text x="175" y="111" class="col-desc">UNIQUE, NN</text>
+
+    <rect x="1" y="121" width="258" height="28" class="row-odd"/>
+    <text x="12" y="139" class="col-name">senha</text>
+    <text x="80" y="139" class="col-type">TEXT</text>
+    <text x="175" y="139" class="col-desc">bcrypt hash</text>
+  </g>
+
+  <!-- ================= TABELA CLIENTES ================= -->
+  <g transform="translate(360, 100)" filter="url(#shadow)">
+    <rect width="280" height="225" class="body-bg"/>
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 36 L 0 36 Z" class="header-bg"/>
+    <text x="140" y="24" text-anchor="middle" class="header-text">CLIENTES</text>
+
+    <rect x="1" y="37" width="278" height="28" class="row-even"/>
+    <text x="12" y="55" class="col-name">id</text>
+    <text x="80" y="55" class="col-type">INTEGER</text>
+    <text x="230" y="55" class="col-pk">[PK]</text>
+
+    <rect x="1" y="65" width="278" height="28" class="row-odd"/>
+    <text x="12" y="83" class="col-name">nome</text>
+    <text x="80" y="83" class="col-type">TEXT</text>
+    <text x="190" y="83" class="col-desc">NOT NULL</text>
+
+    <rect x="1" y="93" width="278" height="28" class="row-even"/>
+    <text x="12" y="111" class="col-name">cpf</text>
+    <text x="80" y="111" class="col-type">TEXT</text>
+    <text x="170" y="111" class="col-desc">AES-256-GCM</text>
+
+    <rect x="1" y="121" width="278" height="28" class="row-odd"/>
+    <text x="12" y="139" class="col-name">telefone</text>
+    <text x="80" y="139" class="col-type">TEXT</text>
+    <text x="195" y="139" class="col-desc">NULLABLE</text>
+
+    <rect x="1" y="149" width="278" height="28" class="row-even"/>
+    <text x="12" y="167" class="col-name">email</text>
+    <text x="80" y="167" class="col-type">TEXT</text>
+    <text x="195" y="167" class="col-desc">NULLABLE</text>
+  </g>
+
+  <!-- ================= TABELA VEICULOS ================= -->
+  <g transform="translate(700, 100)" filter="url(#shadow)">
+    <rect width="280" height="255" class="body-bg"/>
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 36 L 0 36 Z" class="header-bg"/>
+    <text x="140" y="24" text-anchor="middle" class="header-text">VEICULOS</text>
+
+    <rect x="1" y="37" width="278" height="28" class="row-even"/>
+    <text x="12" y="55" class="col-name">id</text>
+    <text x="100" y="55" class="col-type">INTEGER</text>
+    <text x="230" y="55" class="col-pk">[PK]</text>
+
+    <rect x="1" y="65" width="278" height="28" class="row-odd"/>
+    <text x="12" y="83" class="col-name">placa</text>
+    <text x="100" y="83" class="col-type">TEXT</text>
+    <text x="180" y="83" class="col-desc">UNIQUE, NN</text>
+
+    <rect x="1" y="93" width="278" height="28" class="row-even"/>
+    <text x="12" y="111" class="col-name">modelo</text>
+    <text x="100" y="111" class="col-type">TEXT</text>
+    <text x="195" y="111" class="col-desc">NOT NULL</text>
+
+    <rect x="1" y="121" width="278" height="28" class="row-odd"/>
+    <text x="12" y="139" class="col-name">tipo</text>
+    <text x="100" y="139" class="col-type">TEXT</text>
+    <text x="195" y="139" class="col-desc">NOT NULL</text>
+
+    <rect x="1" y="149" width="278" height="28" class="row-even"/>
+    <text x="12" y="167" class="col-name">marca</text>
+    <text x="100" y="167" class="col-type">TEXT</text>
+    <text x="195" y="167" class="col-desc">NULLABLE</text>
+
+    <rect x="1" y="177" width="278" height="28" class="row-odd"/>
+    <text x="12" y="195" class="col-name">cliente_id</text>
+    <text x="100" y="195" class="col-type">INTEGER</text>
+    <text x="210" y="195" class="col-fk">[FK -> c.id]</text>
+  </g>
+
+  <!-- ================= TABELA AGENDAMENTOS ================= -->
+  <g transform="translate(700, 420)" filter="url(#shadow)">
+    <rect width="280" height="170" class="body-bg"/>
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 36 L 0 36 Z" class="header-bg"/>
+    <text x="140" y="24" text-anchor="middle" class="header-text">AGENDAMENTOS</text>
+
+    <rect x="1" y="37" width="278" height="28" class="row-even"/>
+    <text x="12" y="55" class="col-name">id</text>
+    <text x="135" y="55" class="col-type">INTEGER</text>
+    <text x="230" y="55" class="col-pk">[PK]</text>
+
+    <rect x="1" y="65" width="278" height="28" class="row-odd"/>
+    <text x="12" y="83" class="col-name">veiculo_id</text>
+    <text x="135" y="83" class="col-type">INTEGER</text>
+    <text x="210" y="83" class="col-fk">[FK -> v.id]</text>
+
+    <rect x="1" y="93" width="278" height="28" class="row-even"/>
+    <text x="12" y="111" class="col-name">data_agendamento</text>
+    <text x="135" y="111" class="col-type">TEXT (ISO)</text>
+    <text x="210" y="111" class="col-desc">NN</text>
+
+    <rect x="1" y="121" width="278" height="28" class="row-odd"/>
+    <text x="12" y="139" class="col-name">servico</text>
+    <text x="135" y="139" class="col-type">TEXT</text>
+    <text x="210" y="139" class="col-desc">NOT NULL</text>
+  </g>
+
+  <!-- ================= RELACIONAMENTOS (Linhas e Cardinalidades) ================= -->
+  
+  <!-- Relacionamento 1:N entre CLIENTES e VEICULOS -->
+  <path d="M 640 180 L 700 180" class="line"/>
+  <!-- Ponta do 1 (Clientes) -->
+  <line x1="648" y1="172" x2="648" y2="188" stroke="#1d4ed8" stroke-width="2.5"/>
+  <line x1="653" y1="172" x2="653" y2="188" stroke="#1d4ed8" stroke-width="2.5"/>
+  <text x="644" y="165" class="card-label">1</text>
+  <!-- Pé de galinha N (Veículos) -->
+  <line x1="692" y1="172" x2="700" y2="180" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="692" y1="188" x2="700" y2="180" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="686" cy="180" r="4" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="682" y="165" class="card-label">0..N</text>
+
+  <!-- Relacionamento 1:N entre VEICULOS e AGENDAMENTOS -->
+  <path d="M 840 355 L 840 420" class="line"/>
+  <!-- Ponta do 1 (Veículos) -->
+  <line x1="832" y1="363" x2="848" y2="363" stroke="#1d4ed8" stroke-width="2.5"/>
+  <line x1="832" y1="368" x2="848" y2="368" stroke="#1d4ed8" stroke-width="2.5"/>
+  <text x="855" y="370" class="card-label">1</text>
+  <!-- Pé de galinha N (Agendamentos) -->
+  <line x1="832" y1="412" x2="840" y2="420" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="848" y1="412" x2="840" y2="420" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="840" cy="406" r="4" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="855" y="415" class="card-label">0..N</text>
+
+  <!-- Legenda explicativa inferior -->
+  <g transform="translate(40, 520)">
+    <rect width="580" height="70" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="15" y="24" font-family="'Segoe UI', sans-serif" font-size="12px" font-weight="bold" fill="#334155">Legenda e Regras de Integridade:</text>
+    <text x="15" y="44" font-family="'Segoe UI', sans-serif" font-size="11px" fill="#64748b">• 1 Cliente possui 0 ou N Veículos (1:N) | FK: veiculos.cliente_id -> clientes.id (NOT NULL)</text>
+    <text x="15" y="60" font-family="'Segoe UI', sans-serif" font-size="11px" fill="#64748b">• 1 Veículo possui 0 ou N Agendamentos (1:N) | FK: agendamentos.veiculo_id -> veiculos.id (NOT NULL)</text>
+  </g>
+</svg>
